@@ -1,0 +1,204 @@
+/* ============================================================
+   TV Show Analytics Dashboard — Custom Styles
+   Uses CSS custom properties for consistent theming.
+   Tailwind CSS handles the majority of layout/spacing.
+   ============================================================ */
+
+/* ---- CSS Custom Properties (Design Tokens) ---- */
+:root {
+  --color-primary:        #660033;   /* Burgundy — brand primary */
+  --color-primary-light:  #fce7ef;   /* Tinted background for primary */
+  --color-primary-hover:  #4d0026;   /* Darker burgundy on hover */
+  --color-accent:         #F59E0B;   /* Amber — highlights / badges */
+  --color-accent-light:   #fef3c7;   /* Tinted background for accent */
+
+  --radius-card:   12px;
+  --shadow-card:   0 1px 4px 0 rgba(0,0,0,.06), 0 4px 16px 0 rgba(0,0,0,.04);
+  --shadow-hover:  0 4px 12px 0 rgba(102,0,51,.12), 0 8px 24px 0 rgba(102,0,51,.08);
+
+  --transition: all 0.2s ease;
+}
+
+/* ---- Base ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  background: #f8f9fb;
+  color: #1f2328;
+}
+
+/* ---- Header ---- */
+.app-header {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.04);
+}
+
+.brand-icon {
+  background: var(--color-primary);
+}
+
+/* ---- Dashboard Card ---- */
+.dashboard-card {
+  background: #fff;
+  border-radius: var(--radius-card);
+  border: 1px solid #e9eaec;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.dashboard-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+/* ---- KPI Cards ---- */
+.kpi-card { }
+
+.kpi-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+.kpi-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-desc {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+/* ---- Section Label ---- */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+/* ---- Chart Titles ---- */
+.chart-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.chart-subtitle {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* ---- Chart Containers ---- */
+.chart-container {
+  position: relative;
+  height: 260px;
+}
+
+.chart-container-tall {
+  position: relative;
+  height: 340px;
+}
+
+/* ---- Filters ---- */
+.filter-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.filter-select {
+  font-size: 0.82rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  color: #374151;
+  outline: none;
+  transition: var(--transition);
+  appearance: auto;
+}
+
+.filter-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+}
+
+/* ---- Reset Button ---- */
+.btn-reset {
+  color: var(--color-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.btn-reset:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary-hover);
+}
+
+/* ---- Table ---- */
+.table-head-row {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+#top10-tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.15s ease;
+}
+
+#top10-tbody tr:last-child { border-bottom: none; }
+#top10-tbody tr:hover { background: #fdf2f6; }
+
+/* ---- Platform Badge ---- */
+.platform-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.badge-netflix  { background:#fce7ef; color:#660033; }
+.badge-disney   { background:#dbeafe; color:#1d4ed8; }
+.badge-amazon   { background:#fef9c3; color:#92400e; }
+.badge-hulu     { background:#d1fae5; color:#065f46; }
+.badge-other    { background:#f3f4f6; color:#374151; }
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 640px) {
+  .kpi-value { font-size: 1.4rem; }
+  .chart-container { height: 220px; }
+  .chart-container-tall { height: 300px; }
+}
